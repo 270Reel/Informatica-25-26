@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
+<head>
+    <title>Modulo Utente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <h2 class="titolo">Form in HTML e css</h2>
 
-    <body>
+<form>
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Enter your first name..">
 
-    <h2>Style an HTML Form with CSS</h2>
-
-    <form>
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname" placeholder="Enter your first name..">
-
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Enter your last name..">
-        
-        <label for="dateOfBirthday">Date of birthday</label>
-        <input type="date">
-
-
-        <label for="continent">Select continent</label>
-        <select id="continent" name="continent">
-            <option value="america">America</option>
-            <option value="asia">Asia</option>
-            <option value="europe">Europe</option>
-            <option value="oceania">Terra Sacra</option>
-        </select>
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Enter your last name..">
     
-        <input type="submit" value="Submit">
-    </form>
+    <label for="bdate">Date of Birth</label>
+    <input type="text" id="bdate" name="dateOfBirthday" placeholder="gg/mm/aaaa">
 
-    </body>
+    <label for="continent">Select continent</label>
+    <select id="continent" name="continent">
+        <option value="america">America</option>
+        <option value="asia">Asia</option>
+        <option value="europe">Europe</option>
+        <option value="oceania">Oceania</option>
+    </select>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
 </html>
