@@ -1,39 +1,46 @@
+/* Il form occupa tutta la larghezza della finestra */
 form {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  width: 300px;
-  margin: 0 auto;
+  width: 100vw;              /* 100% della larghezza della finestra del browser */
+  padding: 40px;             /* spazio interno per non far aderire i campi ai bordi del form */
+  background: #f3ecec;       /* colore di sfondo chiaro del form */
+  box-sizing: border-box;    /* include padding e bordo nel calcolo della larghezza */
 }
 
+/* Stile del titolo */
+.titolo {
+  text-align: center;         /* centra il testo orizzontalmente */
+  padding-top: 20px;          /* piccolo spazio sopra il titolo */
+}
+
+/* Stile delle label (descrizioni dei campi) */
 label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
+  margin-top: 15px;           /* spazio sopra ogni label */
+  font-weight: bold;          /* testo in grassetto */
 }
 
-input[type=text], input[type=date], select {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 6px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  cursor: pointer;
+/* Stile generale dei campi di input e delle select */
+input, select {
+  width: 100%;                /* campo largo quanto il contenitore */
+  padding: 12px;              /* spazio interno per rendere il testo più leggibile */
+  margin: 8px;              /* spazio verticale tra i campi */
+  border: 3px solid #ccc;     /* bordo sottile grigio chiaro */
+  border-radius: 14px;         /* angoli arrotondati */
+  box-sizing: border-box;     /* include padding e bordo nella larghezza totale */
 }
 
+/* Stile del pulsante di invio */
 input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 8px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  background: #4CAF50;        /* colore di sfondo verde */
+  color: #fff;                /* testo bianco */
+  border: none;               /* nessun bordo visibile */
+  padding: 14px;              /* spazio interno del bottone */
+  margin-top: 20px;           /* spazio sopra il bottone */
+  cursor: pointer;            /* cursore a mano al passaggio */
+  font-size: 1em;             /* dimensione del testo */
+  border-radius: 6px;         /* angoli arrotondati */
 }
 
+/* Effetto al passaggio del mouse sul pulsante */
 input[type=submit]:hover {
-  background-color: #4a7a4e;
+  background: #3e8e41;        /* verde più scuro al passaggio del mouse */
 }
