@@ -4,12 +4,15 @@ form {
   padding: 40px;             /* spazio interno per non far aderire i campi ai bordi del form */
   background: #f3ecec;       /* colore di sfondo chiaro del form */
   box-sizing: border-box;    /* include padding e bordo nel calcolo della larghezza */
+  font-family: Arial, sans-serif;
 }
 
 /* Stile del titolo */
 .titolo {
   text-align: center;         /* centra il testo orizzontalmente */
   padding-top: 20px;          /* piccolo spazio sopra il titolo */
+  font-family: monospace;
+  font-size: xx-large;
 }
 
 /* Stile delle label (descrizioni dei campi) */
@@ -44,3 +47,19 @@ input[type=submit] {
 input[type=submit]:hover {
   background: #3e8e41;        /* verde più scuro al passaggio del mouse */
 }
+
+body {
+  background-color: #f0f0f0;
+}
+
+.box {
+  width: 200px;
+  height: 100px;
+  background-color: lightblue;
+  padding: 20px;     /* Spazio interno al bordo */
+  border: 5px solid blue; /* Bordo attorno al contenuto */
+  margin: 30px;       /* Spazio esterno tra l’elemento e gli altri */
+  font-size: 20px;
+  text-align: center;
+}
+
