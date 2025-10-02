@@ -1,1 +1,0 @@
-# Informatica-25-26
