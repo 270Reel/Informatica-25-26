@@ -28,7 +28,6 @@ input, select {
   margin: 8px;              /* spazio verticale tra i campi */
   border: 3px solid #ccc;     /* bordo sottile grigio chiaro */
   border-radius: 14px;         /* angoli arrotondati */
-  box-sizing: border-box;     /* include padding e bordo nella larghezza totale */
 }
 
 /* Stile del pulsante di invio */
