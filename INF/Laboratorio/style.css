@@ -1,6 +1,6 @@
 /* Il form occupa tutta la larghezza della finestra */
 form {
-  width: ;              /* 100% della larghezza della finestra del browser */
+  width: 100% ;              /* 100% della larghezza della finestra del browser */
   padding: 40px;             /* spazio interno per non far aderire i campi ai bordi del form */
   background: #f3ecec;       /* colore di sfondo chiaro del form */
   font-family: Arial, sans-serif;
@@ -48,7 +48,6 @@ input[type=submit]:hover {
 
 body {
   background-color: #f0f0f0;
-  background-image: url(immagine.jpg);
 }
 
 .box {
