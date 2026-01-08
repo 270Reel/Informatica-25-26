@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "scuola");
+$conn = new mysqli("localhost", "root", "", "gestionestudenti");
 
 if ($conn->connect_error) {
     die("Connessione fallita");
@@ -8,11 +8,9 @@ if ($conn->connect_error) {
 if (isset($_POST['salva'])) {
     $nome = $_POST['nome'];
     $cognome = $_POST['cognome'];
-    $classe = $_POST['classe'];
-
-    $sql = "INSERT INTO studenti (nome, cognome, classe)
-            VALUES ('$nome', '$cognome', '$classe')";
-
+    
+    $sql = "INSERT INTO studenti (nome, cognome)
+            VALUES ('$nome', '$cognome')";
     $conn->query($sql);
     echo "Studente inserito con successo!";
 }
@@ -22,8 +20,7 @@ if (isset($_POST['salva'])) {
 
 <form method="post">
     Nome: <input type="text" name="nome" required><br><br>
-    Cognome: <input type="text" name="cognome" required><br><br>
-    Classe: <input type="text" name="classe" required><br><br>
+    Cognome: <input type="text" name="cognome" required><br><br
     <input type="submit" name="salva" value="Inserisci">
 </form>
 
