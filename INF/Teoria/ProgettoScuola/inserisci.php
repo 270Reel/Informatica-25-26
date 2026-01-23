@@ -6,8 +6,8 @@ if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
 
-$nome = $_POST['nome'];
-$cognome = $_POST['cognome'];
+$Nome = $_POST['nome'];
+$Cognome = $_POST['cognome'];
 
 $sql = "INSERT INTO studenti (nome, cognome) VALUES (?, ?)";
 
