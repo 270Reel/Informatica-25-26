@@ -3,19 +3,99 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Gestione Studenti</title>
-    <link rel="stylesheet" href="css/stileindex.css">
+    <style>
+:root{
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --primary:#2e9e60;
+    --primary-dark:#238148;
+    --muted:#6b7280;
+    --radius:12px;
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg, var(--bg), #eef3f8 60%);
+    color:#1f2937;
+    -webkit-font-smoothing:antialiased;
+}
+
+.page{
+    max-width:900px;
+    margin:40px auto;
+    padding:20px;
+    text-align:center;
+}
+
+h1{
+    margin:0 0 26px 0;
+    font-size:36px;
+    color:var(--card);
+    background: linear-gradient(90deg,var(--primary),var(--primary-dark));
+    padding:18px 28px;
+    border-radius:calc(var(--radius) + 4px);
+    display:inline-block;
+    box-shadow: 0 8px 24px rgba(34,60,80,0.08);
+}
+
+.menu-card{
+    margin:28px auto 0;
+    background:var(--card);
+    width:420px;
+    border-radius:var(--radius);
+    padding:18px;
+    box-shadow: 0 8px 20px rgba(31,41,55,0.06);
+}
+
+ul{list-style:none;margin:0;padding:12px 8px;display:flex;flex-direction:column;gap:10px;align-items:center}
+
+li{width:100%}
+
+li a{
+    display:block;
+    width:100%;
+    padding:12px 18px;
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    border:2px solid rgba(46,158,96,0.14);
+    border-radius:10px;
+    background:linear-gradient(180deg, #fff, #fbfeff);
+    box-shadow: 0 4px 10px rgba(16,24,40,0.04);
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+li a:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(16,24,40,0.08);color:var(--primary-dark);background:linear-gradient(180deg,#f8fffb,#fff)}
+
+@media (max-width:480px){
+    .menu-card{width:92%;padding:12px}
+    h1{font-size:28px;padding:12px 16px}
+}
+
+/* small helper for center-only pages */
+.center{display:flex;align-items:center;justify-content:center;flex-direction:column}
+
+    </style>
 </head>
 
 <body>
 
-    <h1>Gestione Studenti</h1>
+    <div class="page">
+        <h1>Gestione Studenti</h1>
 
-    <ul>
-        <li><a href="php/inserisci.php">Inserisci Studente</a></li>
-        <li><a href="php/dashboardstudenti.php">Dashboard Studente</a></li>
-        <li><a href="php/voto10.php">Studenti con voto 10</a></li>
-    </ul>
+        <div class="menu-card">
+            <ul>
+                <li><a href="php/inserisci.php">Inserisci Studente</a></li>
+                <li><a href="php/dashboardstudenti.php">Dashboard Studente</a></li>
+                <li><a href="php/voto10.php">Studenti con voto 10</a></li>
+            </ul>
+        </div>
+    </div>
 
 </body>
 
