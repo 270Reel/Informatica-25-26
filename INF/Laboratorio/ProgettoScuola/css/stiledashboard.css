@@ -1,0 +1,70 @@
+:root {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --primary: #2e9e60;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, "Segoe UI", Roboto, Arial;
+    background: linear-gradient(180deg, var(--bg), #eef3f8);
+    color: #0f1724;
+}
+
+.form-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 12px;
+}
+
+.card {
+    width: 100%;
+    max-width: 900px;
+    background: var(--card);
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #eef3f6;
+}
+
+th {
+    background: linear-gradient(90deg, var(--primary), #1f8a4f);
+    color: white;
+}
+
+tr:nth-child(odd) {
+    background: #fbfeff;
+}
+
+.msg.error {
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    background: #fff5f5;
+    color: #7f1d1d;
+}

@@ -1,0 +1,93 @@
+:root {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --primary: #2e9e60;
+    --accent: #0ea5a9;
+    --muted: #6b7280;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: linear-gradient(180deg, var(--bg), #eef3f8);
+    color: #0f1724;
+}
+
+.form-wrap {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 12px;
+}
+
+form {
+    width: 100%;
+    max-width: 480px;
+    background: var(--card);
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #e6eef5;
+    border-radius: 8px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #26a063;
+}
+
+.msg {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.msg.success {
+    background: #e6f8ef;
+    color: #0b6a3a;
+}
+
+.msg.error {
+    background: #fff5f5;
+    color: #7f1d1d;
+}
+
+.home-link {
+    text-align: center;
+    margin-top: 10px;
+}

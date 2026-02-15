@@ -1,27 +1,54 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "gestionestudenti");
+// ==========================
+// CONNESSIONE AL DATABASE
+// ==========================
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "gestionestudenti";
+
+$conn = new mysqli($host, $user, $password, $database);
 
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
 
+// ==========================
+// LOGICA INSERIMENTO
+// ==========================
 $message = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $Nome = $_POST['nome'] ?? '';
-    $Cognome = $_POST['cognome'] ?? '';
+$messageType = '';
 
-    $sql = "INSERT INTO studenti (nome, cognome) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
-    if ($stmt) {
-        $stmt->bind_param("ss", $Nome, $Cognome);
-        if ($stmt->execute()) {
-            $message = "Studente inserito con successo! ID generato: " . $stmt->insert_id;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $nome = trim($_POST['nome'] ?? '');
+    $cognome = trim($_POST['cognome'] ?? '');
+
+    if (!empty($nome) && !empty($cognome)) {
+
+        $sql = "INSERT INTO studenti (nome, cognome) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param("ss", $nome, $cognome);
+
+            if ($stmt->execute()) {
+                $message = "Studente inserito con successo! ID: " . $stmt->insert_id;
+                $messageType = "success";
+            } else {
+                $message = "Errore durante l'inserimento.";
+                $messageType = "error";
+            }
+
+            $stmt->close();
         } else {
-            $message = "Errore durante l'inserimento: " . $stmt->error;
+            $message = "Errore nella preparazione della query.";
+            $messageType = "error";
         }
-        $stmt->close();
+
     } else {
-        $message = "Errore nella preparazione della query: " . $conn->error;
+        $message = "Compila tutti i campi.";
+        $messageType = "error";
     }
 }
 
@@ -30,103 +57,40 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Inserimento Studente</title>
-        <style>
-:root{
-    --bg:#f4f7fb;
-    --card:#ffffff;
-    --primary:#2e9e60;
-    --accent:#0ea5a9;
-    --muted:#6b7280;
-    --radius:12px;
-}
-
-*{box-sizing:border-box}
-
-body{
-    margin:0;
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg,var(--bg),#eef3f8);
-    color:#0f1724;
-    -webkit-font-smoothing:antialiased;
-}
-
-.form-wrap{
-    min-height:80vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:28px 12px;
-}
-
-form{
-    width:100%;
-    max-width:480px;
-    background:var(--card);
-    padding:28px;
-    border-radius:var(--radius);
-    box-shadow:0 12px 30px rgba(15,23,42,0.06);
-}
-
-h2{text-align:center;color:#102a43;margin:0 0 16px 0}
-
-label{display:block;margin-bottom:8px;font-weight:600;color:var(--muted)}
-
-input[type="text"],input[type="date"],input[type="email"]{
-    width:100%;padding:12px 14px;margin-bottom:14px;border:1px solid #e6eef5;border-radius:8px;background:#fbfeff;transition:box-shadow .15s, border-color .12s
-}
-
-input[type="text"]:focus,input[type="date"]:focus,input[type="email"]:focus{
-    outline:none;border-color:var(--accent);box-shadow:0 6px 18px rgba(14,165,169,0.08)
-}
-
-input[type="submit"]{
-    width:100%;padding:12px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--primary),#26a063);color:#fff;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(38,160,99,0.12);transition:transform .12s ease,box-shadow .12s ease
-}
-
-input[type="submit"]:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(38,160,99,0.14)}
-
-.msg{padding:10px 14px;border-radius:8px;margin:12px 0;text-align:center}
-.msg.success{background:linear-gradient(90deg,#e6f8ef,#f7fffb);color:#0b6a3a;border:1px solid rgba(38,160,99,0.12)}
-.msg.error{background:#fff5f5;color:#7f1d1d;border:1px solid rgba(127,29,29,0.08)}
-
-.table-responsive{overflow:auto}
-table{width:100%;border-collapse:collapse;margin:18px 0}
-th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #eef3f6}
-th{background:linear-gradient(90deg,var(--primary),var(--primary-dark, #1f8a4f));color:#fff;font-weight:700}
-tr:nth-child(odd){background:#fbfeff}
-
-@media (max-width:520px){
-    form{padding:16px;border-radius:10px}
-}
-
-        </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserisci Studente</title>
+    <link rel="stylesheet" href="css/stileinserisci.css">
 </head>
 
 <body>
-        <div class="form-wrap">
-            <form method="post" action="inserisci.php">
-                <h2>Inserisci Studente</h2>
 
-                <?php if ($message): ?>
-                        <div class="msg success"><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></div>
-                <?php endif; ?>
+<div class="form-wrap">
+    <form method="post">
 
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" required>
+        <h2>Inserisci Studente</h2>
 
-                <label for="cognome">Cognome</label>
-                <input type="text" id="cognome" name="cognome" required>
+        <?php if (!empty($message)): ?>
+            <div class="msg <?php echo $messageType; ?>">
+                <?php echo htmlspecialchars($message); ?>
+            </div>
+        <?php endif; ?>
 
-                <input type="submit" value="Inserisci">
-                <p style="text-align:center;margin-top:10px"><a href="../index.html">Torna alla home</a></p>
-            </form>
-        </div>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="cognome">Cognome</label>
+        <input type="text" id="cognome" name="cognome" required>
+
+        <input type="submit" value="Inserisci">
+
+        <p class="home-link">
+            <a href="index.html">Torna alla home</a>
+        </p>
+
+    </form>
+</div>
 
 </body>
-
 </html>
