@@ -61,7 +61,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserisci Studente</title>
-    <link rel="stylesheet" href="css/stileinserisci.css">
+    <link rel="stylesheet" href="ProgettoScuola/css/stileinserisci.css">
 </head>
 
 <body>

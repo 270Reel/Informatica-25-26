@@ -33,7 +33,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studenti con voto 10</title>
-    <link rel="stylesheet" href="css/stilevoto10.css">
+    <link rel="stylesheet" href="ProgettoScuola/css/stilevoto10.css">
 </head>
 
 <body>
