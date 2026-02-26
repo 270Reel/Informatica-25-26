@@ -36,7 +36,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Studenti</title>
-    <link rel="stylesheet" href="ProgettoScuola/css/stiledashboard.css">
+    <link rel="stylesheet" href="css/stiledashboard.css">
 </head>
 
 <body>
